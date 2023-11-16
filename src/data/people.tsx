@@ -1,40 +1,72 @@
-export interface Person {
-  name: string;
-  age: number;
-  height: number;
-  portrait: string;
+import { Person } from "../types/personTypes";
+function getRandomEmoji(): string {
+  const emojis = ["😀", "😎", "👩‍💻", "🌟", "🚀", "🎉", "🌈"];
+  const randomIndex = Math.floor(Math.random() * emojis.length);
+  return emojis[randomIndex];
 }
-let peopleArray: Person[] = [
+export let peopleArray: Person[] = [
   {
     name: "John Doe",
     age: 25,
     height: 175,
-    portrait: '<img src="john_doe_thumbnail.jpg" alt="John Doe">',
+    portrait: getRandomEmoji(),
   },
   {
     name: "Jane Smith",
     age: 30,
     height: 160,
-    portrait: '<img src="jane_smith_thumbnail.jpg" alt="Jane Smith">',
+    portrait: getRandomEmoji(),
   },
   {
     name: "Bob Johnson",
     age: 40,
     height: 180,
-    portrait: '<img src="bob_johnson_thumbnail.jpg" alt="Bob Johnson">',
+    portrait: getRandomEmoji(),
   },
   {
     name: "Emily Davis",
     age: 28,
     height: 165,
-    portrait: '<img src="emily_davis_thumbnail.jpg" alt="Emily Davis">',
+    portrait: getRandomEmoji(),
   },
   {
     name: "Mike Miller",
     age: 35,
     height: 190,
-    portrait: '<img src="mike_miller_thumbnail.jpg" alt="Mike Miller">',
+    portrait: getRandomEmoji(),
   },
 ];
 
+export let morePeopleArray: Person[] = [
+  {
+    name: "Alice Johnson",
+    age: 28,
+    height: 160,
+    portrait: getRandomEmoji(),
+  },
+  {
+    name: "Charlie Brown",
+    age: 35,
+    height: 175,
+    portrait: getRandomEmoji(),
+  },
+  {
+    name: "Eva Martinez",
+    age: 42,
+    height: 168,
+    portrait: getRandomEmoji(),
+  },
+  {
+    name: "David Turner",
+    age: 32,
+    height: 185,
+    portrait: getRandomEmoji(),
+  },
+  {
+    name: "Grace Thompson",
+    age: 27,
+    height: 155,
+    portrait: getRandomEmoji(),
+  },
+];
 export default peopleArray;
