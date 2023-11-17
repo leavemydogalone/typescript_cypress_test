@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import "./App.css";
 import { peopleArray, morePeopleArray } from "./data/people";
 import { NewPersonType, Person } from "./types/personTypes";
 import PersonComponent from "./components/Person";
 import AddPersonButton from "./components/AddPersonButton";
 import PersonForm from "./components/PersonForm";
+import { reducer } from "./helpers/formReducer";
 
 function App() {
   const [people, setPeople] = useState<Person[] | []>([]);
@@ -12,6 +13,8 @@ function App() {
   const [newPersonData, setNewPersonData] = useState<NewPersonType | null>(
     null
   );
+  const [state, dispatch] = useReducer(reducer, {});
+
   useEffect(() => {
     //mock API call
     if (peopleArray !== null) {
@@ -44,7 +47,10 @@ function App() {
         <PersonForm />
       </aside>
       <div className="buttonContainer">
-        <AddPersonButton onClick={handleAddNewPerson} />
+        <AddPersonButton
+          onClick={handleAddNewPerson}
+          disabled={morePeople.length === 0 && newPersonData === null}
+        />
       </div>
     </main>
   );

@@ -10,3 +10,7 @@ export interface Person {
   height: number;
   portrait: string;
 }
+
+export enum ACTIONS {
+  ADD_Person,
+}
