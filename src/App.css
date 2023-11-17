@@ -1,8 +1,32 @@
+.App {
+  min-height: 100vh;
+  display: grid;
+  grid-template-areas:
+    "main aside"
+    "main aside"
+    "bottom bottom";
+}
 .peopleContainer {
+  grid-area: main;
   display: grid;
   width: 100%;
   max-width: 625px;
   margin: auto;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-auto-rows: 250px;
+}
+.formContainer {
+  grid-area: aside;
+}
+.buttonContainer {
+  grid-area: bottom;
+  position: sticky;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ff8c8c;
 }

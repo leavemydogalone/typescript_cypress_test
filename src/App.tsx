@@ -4,6 +4,7 @@ import { peopleArray, morePeopleArray } from "./data/people";
 import { NewPersonType, Person } from "./types/personTypes";
 import PersonComponent from "./components/Person";
 import AddPersonButton from "./components/AddPersonButton";
+import PersonForm from "./components/PersonForm";
 
 function App() {
   const [people, setPeople] = useState<Person[] | []>([]);
@@ -25,8 +26,10 @@ function App() {
   function handleAddNewPerson(): void {
     if (newPersonData !== null) {
     } else {
-      setPeople((prev) => [...prev, morePeople[0]]);
-      setMorePeople((prev) => prev.slice(1));
+      if (morePeople.length > 0) {
+        setPeople((prev) => [...prev, morePeople[0]]);
+        setMorePeople((prev) => prev.slice(1));
+      }
     }
   }
 
@@ -37,6 +40,9 @@ function App() {
           <PersonComponent personData={person} />
         ))}
       </section>
+      <aside className="formContainer">
+        <PersonForm />
+      </aside>
       <div className="buttonContainer">
         <AddPersonButton onClick={handleAddNewPerson} />
       </div>
