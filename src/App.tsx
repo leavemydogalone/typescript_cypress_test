@@ -6,14 +6,14 @@ import PersonComponent from "./components/Person";
 import AddPersonButton from "./components/AddPersonButton";
 import PersonForm from "./components/PersonForm";
 import { reducer } from "./helpers/formReducer";
+import getRandomEmoji from "./helpers/getRandomEmoji";
 
 function App() {
   const [people, setPeople] = useState<Person[] | []>([]);
   const [morePeople, setMorePeople] = useState<Person[] | []>([]);
-  const [newPersonData, setNewPersonData] = useState<NewPersonType | null>(
-    null
-  );
-  const [state, dispatch] = useReducer(reducer, {});
+  const [state, dispatch] = useReducer(reducer, { portrait: getRandomEmoji() });
+
+  const completePerson = state.age && state.name && state.height;
 
   useEffect(() => {
     //mock API call
@@ -27,7 +27,7 @@ function App() {
   }, [morePeopleArray]);
 
   function handleAddNewPerson(): void {
-    if (newPersonData !== null) {
+    if (completePerson) {
     } else {
       if (morePeople.length > 0) {
         setPeople((prev) => [...prev, morePeople[0]]);
@@ -49,7 +49,7 @@ function App() {
       <div className="buttonContainer">
         <AddPersonButton
           onClick={handleAddNewPerson}
-          disabled={morePeople.length === 0 && newPersonData === null}
+          disabled={morePeople.length === 0 || !completePerson}
         />
       </div>
     </main>

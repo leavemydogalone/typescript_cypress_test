@@ -2,6 +2,7 @@ export type NewPersonType = {
   name?: string;
   age?: number;
   height?: number;
+  portrait: string;
 };
 
 export interface Person {

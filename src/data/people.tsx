@@ -1,9 +1,6 @@
+import getRandomEmoji from "../helpers/getRandomEmoji";
 import { Person } from "../types/personTypes";
-function getRandomEmoji(): string {
-  const emojis = ["😀", "😎", "👩‍💻", "🌟", "🚀", "🎉", "🌈"];
-  const randomIndex = Math.floor(Math.random() * emojis.length);
-  return emojis[randomIndex];
-}
+
 export let peopleArray: Person[] = [
   {
     name: "John Doe",
