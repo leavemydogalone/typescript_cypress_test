@@ -13,7 +13,7 @@ function App() {
   const [morePeople, setMorePeople] = useState<Person[] | []>([]);
   const [state, dispatch] = useReducer(reducer, { portrait: getRandomEmoji() });
 
-  const completePerson = state.age && state.name && state.height;
+  const completePerson = state.age && state.name && state.height ? true : false;
 
   useEffect(() => {
     //mock API call
@@ -49,7 +49,7 @@ function App() {
       <div className="buttonContainer">
         <AddPersonButton
           onClick={handleAddNewPerson}
-          disabled={morePeople.length === 0 || !completePerson}
+          disabled={morePeople.length === 0 || completePerson}
         />
       </div>
     </main>
