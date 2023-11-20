@@ -17,8 +17,8 @@ export default function PersonForm({ dispatch, state }: PersonFormPropType) {
   console.log(typeof state.age);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const id = e.target.id;
-    const updatedValue =
+    const id: string = e.target.id;
+    const updatedValue: string | number =
       e.target.type === "number" ? parseFloat(e.target.value) : e.target.value;
     dispatch({ action: ACTIONS.UPDATE_TEXT, text: updatedValue, id: id });
   }
@@ -51,6 +51,7 @@ export default function PersonForm({ dispatch, state }: PersonFormPropType) {
         value={state.height || ""}
         placeholder="33"
       />
+      <button></button>
     </form>
   );
 }

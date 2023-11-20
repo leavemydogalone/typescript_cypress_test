@@ -15,7 +15,7 @@ export function reducer(
     case ACTIONS.UPDATE_TEXT:
       console.log(typeof payload.text);
       if (typeof payload.id !== "string") return state;
-      // Only allow string for 'name' and 'portrait'
+      // Only allow string for 'name'
       if (
         typeof payload.text === "string" ||
         typeof payload.text === "number"
