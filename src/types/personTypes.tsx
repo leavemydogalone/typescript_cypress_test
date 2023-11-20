@@ -1,7 +1,8 @@
 export type NewPersonType = {
-  name?: string;
-  age?: number;
-  height?: number;
+  // [key: string]: string | number;
+  name: string;
+  age: number;
+  height: number;
   portrait: string;
 };
 
@@ -13,5 +14,6 @@ export interface Person {
 }
 
 export enum ACTIONS {
-  ADD_Person,
+  ADD_PERSON,
+  UPDATE_TEXT,
 }

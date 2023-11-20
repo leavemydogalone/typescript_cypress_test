@@ -11,9 +11,14 @@ import getRandomEmoji from "./helpers/getRandomEmoji";
 function App() {
   const [people, setPeople] = useState<Person[] | []>([]);
   const [morePeople, setMorePeople] = useState<Person[] | []>([]);
-  const [state, dispatch] = useReducer(reducer, { portrait: getRandomEmoji() });
+  const [state, dispatch] = useReducer(reducer, {
+    name: "",
+    age: 0,
+    height: 0,
+    portrait: getRandomEmoji(),
+  });
 
-  const completePerson = state.age && state.name && state.height ? true : false;
+  const completePerson: boolean = !!(state.age && state.name && state.height);
 
   useEffect(() => {
     //mock API call
@@ -44,7 +49,7 @@ function App() {
         ))}
       </section>
       <aside className="formContainer">
-        <PersonForm />
+        <PersonForm dispatch={dispatch} state={state} />
       </aside>
       <div className="buttonContainer">
         <AddPersonButton

@@ -1,0 +1,13 @@
+.form {
+  padding: 20px;
+  width: 200px;
+  background-color: lightblue;
+  border-radius: 5px;
+}
+.form input {
+  background: #ffffff3d;
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 5px 0 10px;
+}
