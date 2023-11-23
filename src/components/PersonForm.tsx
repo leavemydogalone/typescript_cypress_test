@@ -51,7 +51,6 @@ export default function PersonForm({ dispatch, state }: PersonFormPropType) {
         value={state.height || ""}
         placeholder="33"
       />
-      <button></button>
     </form>
   );
 }
