@@ -3,6 +3,8 @@
   width: 200px;
   background-color: lightblue;
   border-radius: 5px;
+  position: sticky;
+  top: 0;
 }
 .form input {
   background: #ffffff3d;

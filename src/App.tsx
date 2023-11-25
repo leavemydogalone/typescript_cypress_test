@@ -6,17 +6,12 @@ import PersonComponent from "./components/Person";
 import AddPersonButton from "./components/AddPersonButton";
 import PersonForm from "./components/PersonForm";
 import { reducer } from "./helpers/formReducer";
-import getRandomEmoji from "./helpers/getRandomEmoji";
+import getDefaultState from "./helpers/getDefaultPersonState";
 
 function App() {
   const [people, setPeople] = useState<Person[] | []>([]);
   const [morePeople, setMorePeople] = useState<Person[] | []>([]);
-  const [state, dispatch] = useReducer(reducer, {
-    name: "",
-    age: 0,
-    height: 0,
-    portrait: getRandomEmoji(),
-  });
+  const [state, dispatch] = useReducer(reducer, getDefaultState());
 
   const completePerson: boolean = !!(state.age && state.name && state.height);
 
@@ -41,6 +36,7 @@ function App() {
       }
     }
   }
+  console.log(morePeopleArray);
 
   return (
     <main className="App">
@@ -55,7 +51,13 @@ function App() {
       <div className="buttonContainer">
         <AddPersonButton
           onClick={handleAddNewPerson}
-          disabled={!completePerson || morePeople.length === 0}
+          whoToAdd={
+            completePerson
+              ? "newPerson"
+              : morePeople.length > 0
+              ? "randomPerson"
+              : null
+          }
         />
       </div>
     </main>

@@ -1,5 +1,6 @@
 import { ACTIONS, NewPersonType, Person } from "../types/personTypes";
 import { Dispatch, SetStateAction } from "react";
+import getDefaultState from "./getDefaultPersonState";
 
 export type PayloadType = {
   action: ACTIONS;
@@ -34,6 +35,7 @@ export function reducer(
           portrait: state.portrait,
         };
         payload.setPeople((prev) => [...prev, newPerson]);
+        state = getDefaultState();
       }
       return state;
     default:
