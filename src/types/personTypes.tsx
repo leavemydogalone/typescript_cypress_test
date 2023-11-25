@@ -16,4 +16,5 @@ export interface Person {
 export enum ACTIONS {
   ADD_PERSON,
   UPDATE_TEXT,
+  SUBMIT_FORM,
 }

@@ -1,7 +1,9 @@
-import { ACTIONS, NewPersonType } from "../types/personTypes";
+import { ACTIONS, NewPersonType, Person } from "../types/personTypes";
+import { Dispatch, SetStateAction } from "react";
 
 export type PayloadType = {
   action: ACTIONS;
+  setPeople?: Dispatch<SetStateAction<Person[]>>;
   text?: string | number;
   id?: string;
 };
@@ -21,6 +23,17 @@ export function reducer(
         typeof payload.text === "number"
       ) {
         return { ...state, [payload.id]: payload.text };
+      }
+      return state;
+    case ACTIONS.SUBMIT_FORM:
+      if (payload.setPeople) {
+        const newPerson: NewPersonType = {
+          name: state.name,
+          age: state.age,
+          height: state.height,
+          portrait: state.portrait,
+        };
+        payload.setPeople((prev) => [...prev, newPerson]);
       }
       return state;
     default:

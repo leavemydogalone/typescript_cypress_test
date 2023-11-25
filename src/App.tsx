@@ -1,7 +1,7 @@
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer, useState, Dispatch } from "react";
 import "./App.css";
 import { peopleArray, morePeopleArray } from "./data/people";
-import { NewPersonType, Person } from "./types/personTypes";
+import { ACTIONS, NewPersonType, Person } from "./types/personTypes";
 import PersonComponent from "./components/Person";
 import AddPersonButton from "./components/AddPersonButton";
 import PersonForm from "./components/PersonForm";
@@ -33,6 +33,7 @@ function App() {
 
   function handleAddNewPerson(): void {
     if (completePerson) {
+      dispatch({ action: ACTIONS.SUBMIT_FORM, setPeople: setPeople });
     } else {
       if (morePeople.length > 0) {
         setPeople((prev) => [...prev, morePeople[0]]);
@@ -54,7 +55,7 @@ function App() {
       <div className="buttonContainer">
         <AddPersonButton
           onClick={handleAddNewPerson}
-          disabled={morePeople.length === 0 || completePerson}
+          disabled={!completePerson || morePeople.length === 0}
         />
       </div>
     </main>
